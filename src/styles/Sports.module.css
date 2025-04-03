@@ -1,0 +1,192 @@
+.sportsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 1.5rem;
+  background-color: var(--bg-darker);
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.scoreBoard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+}
+
+.teamScore {
+  text-align: center;
+}
+
+.teamScore h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+.score {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.vs {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-light);
+  opacity: 0.6;
+}
+
+.playerHighlight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.playerAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.highlightMessage {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fireEmoji, .basketballEmoji {
+  font-size: 1.25rem;
+}
+
+.standingsSection, .statsSection, .summarySection {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.playersList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.playerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.position {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.playerInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.playerName {
+  font-weight: 500;
+}
+
+.playerPoints {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statItem h4 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.topTalker {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  background-color: var(--secondary-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.summaryText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.summaryQuestion {
+  font-size: 1rem;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.rematchButton, .shareButton {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  text-align: center;
+}
+
+.rematchButton {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+}
+
+.shareButton {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.emojiReactions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.emojiReaction {
+  font-size: 1.5rem;
+} 

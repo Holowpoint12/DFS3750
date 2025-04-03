@@ -104,7 +104,7 @@ const ChatInterface: React.FC = () => {
           <p className="text-xs text-text-light opacity-80">Fantasy Basketball • 8 members</p>
         </div>
         <div className="flex gap-2">
-          <span className="bg-primary px-2 py-1 rounded text-xs font-semibold">$10 Buy-in</span>
+          <span className="bg-primary px-2 py-1 rounded text-xs font-semibold">1000 coins</span>
           <span className="bg-success px-2 py-1 rounded text-xs font-semibold">Active Contest</span>
         </div>
       </div>

@@ -1,0 +1,53 @@
+.groupsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.groupAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.groupInfo h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.groupInfo p {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  opacity: 0.8;
+}
+
+.joinButton {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--bg-darker);
+  color: var(--text-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.joinButton:hover {
+  background-color: var(--primary-color);
+} 
