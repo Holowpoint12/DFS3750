@@ -33,8 +33,8 @@ const LiveFeed: React.FC = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   
-  // The video ID from the YouTube URL: https://www.youtube.com/watch?v=uHgt8giw1LY
-  const videoId = 'uHgt8giw1LY';
+  // The video ID from the YouTube URL: https://www.youtube.com/watch?v=1MAXIgtrDDM
+  const videoId = '1MAXIgtrDDM';
   
   const clans: ClanStats[] = [
     {
