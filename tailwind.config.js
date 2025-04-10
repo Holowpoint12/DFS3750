@@ -1,21 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        primary: 'var(--primary)',
-        'primary-light': 'var(--primary-light)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          light: 'var(--primary-light)',
+        },
         secondary: 'var(--secondary)',
         accent: 'var(--accent)',
-        background: 'var(--background)',
-        'background-dark': 'var(--background-dark)',
-        'background-darker': 'var(--background-darker)',
-        'text-primary': 'var(--text-primary)',
-        'text-light': 'var(--text-light)',
+        background: {
+          DEFAULT: 'var(--background)',
+          dark: 'var(--background-dark)',
+          darker: 'var(--background-darker)',
+        },
+        text: {
+          primary: 'var(--text-primary)',
+          light: 'var(--text-light)',
+        },
         notification: 'var(--notification)',
         success: 'var(--success)',
         warning: 'var(--warning)',
@@ -31,6 +38,18 @@ module.exports = {
       animation: {
         'bounce': 'bounce 1s infinite',
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fadeIn': 'fadeIn 0.3s ease-out forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      zIndex: {
+        '50': '50',
+        '60': '60',
+        '70': '70',
       },
     },
   },

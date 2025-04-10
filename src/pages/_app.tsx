@@ -1,9 +1,21 @@
-import React from 'react';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { initializeBrowserTools } from '@/utils/browser-tools';
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    // Initialize browser tools on client-side only
+    if (typeof window !== 'undefined') {
+      initializeBrowserTools().then((success) => {
+        if (!success) {
+          console.log('Browser tools initialization failed, app will function without advanced debugging');
+        }
+      });
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -15,6 +27,4 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </>
   );
-}
-
-export default MyApp; 
+} 

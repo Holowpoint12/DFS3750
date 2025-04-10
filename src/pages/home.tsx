@@ -6,13 +6,26 @@ import GroupsPanel from '@/components/GroupsPanel';
 import SocialLeaderboard from '@/components/SocialLeaderboard';
 import ClansPanel from '@/components/ClansPanel';
 import LiveFeed from '@/components/LiveFeed';
+import { PanelType } from '@/types';
 
 const Home: React.FC = () => {
-  const [activePanel, setActivePanel] = useState<'home' | 'groups' | 'chat' | 'results' | 'leaderboard' | 'clans' | 'live'>('home');
+  const [activePanel, setActivePanel] = useState<PanelType>('home');
 
-  const navigateTo = (panel: 'home' | 'groups' | 'chat' | 'results' | 'leaderboard' | 'clans' | 'live') => {
+  const navigateTo = (panel: PanelType) => {
     setActivePanel(panel);
   };
+
+  // Common back button component to avoid repetition
+  const BackButton = () => (
+    <div className="absolute top-4 left-4 z-10">
+      <button 
+        onClick={() => navigateTo('home')} 
+        className="bg-background-darker text-white p-2 rounded-full"
+      >
+        ← Back
+      </button>
+    </div>
+  );
 
   return (
     <div className="min-h-screen flex flex-col bg-background-dark">
@@ -128,28 +141,14 @@ const Home: React.FC = () => {
       
       {activePanel === 'groups' && (
         <div className="h-screen">
-          <div className="absolute top-4 left-4 z-10">
-            <button 
-              onClick={() => navigateTo('home')} 
-              className="bg-background-darker text-white p-2 rounded-full"
-            >
-              ← Back
-            </button>
-          </div>
+          <BackButton />
           <GroupsPanel onJoinGroup={() => navigateTo('chat')} />
         </div>
       )}
       
       {activePanel === 'chat' && (
         <div className="h-screen">
-          <div className="absolute top-4 left-4 z-10">
-            <button 
-              onClick={() => navigateTo('home')} 
-              className="bg-background-darker text-white p-2 rounded-full"
-            >
-              ← Back
-            </button>
-          </div>
+          <BackButton />
           <div className="absolute bottom-4 right-4 z-10">
             <button 
               onClick={() => navigateTo('results')} 
@@ -164,14 +163,7 @@ const Home: React.FC = () => {
       
       {activePanel === 'results' && (
         <div className="h-screen">
-          <div className="absolute top-4 left-4 z-10">
-            <button 
-              onClick={() => navigateTo('home')} 
-              className="bg-background-darker text-white p-2 rounded-full"
-            >
-              ← Back
-            </button>
-          </div>
+          <BackButton />
           <div className="absolute top-4 right-4 z-10">
             <button 
               onClick={() => navigateTo('leaderboard')} 
@@ -186,50 +178,21 @@ const Home: React.FC = () => {
 
       {activePanel === 'leaderboard' && (
         <div className="h-screen">
-          <div className="absolute top-4 left-4 z-10">
-            <button 
-              onClick={() => navigateTo('home')} 
-              className="bg-background-darker text-white p-2 rounded-full"
-            >
-              ← Back
-            </button>
-          </div>
+          <BackButton />
           <SocialLeaderboard />
         </div>
       )}
 
       {activePanel === 'clans' && (
         <div className="h-screen">
-          <div className="absolute top-4 left-4 z-10">
-            <button 
-              onClick={() => navigateTo('home')} 
-              className="bg-background-darker text-white p-2 rounded-full"
-            >
-              ← Back
-            </button>
-          </div>
+          <BackButton />
           <ClansPanel />
         </div>
       )}
 
       {activePanel === 'live' && (
         <div className="h-screen">
-          <div className="absolute top-4 left-4 z-10">
-            <button 
-              onClick={() => navigateTo('home')} 
-              className="bg-background-darker text-white p-2 rounded-full"
-            >
-              ← Back
-            </button>
-          </div>
-          <div className="absolute bottom-4 right-4 z-10">
-            <button 
-              onClick={() => navigateTo('chat')} 
-              className="bg-primary text-white p-3 rounded-full shadow-medium"
-            >
-              💬
-            </button>
-          </div>
+          <BackButton />
           <LiveFeed />
         </div>
       )}

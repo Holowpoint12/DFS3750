@@ -1,38 +1,5 @@
 import React, { useState } from 'react';
-
-interface ClanMember {
-  id: number;
-  name: string;
-  avatar: string;
-  role: 'leader' | 'co-leader' | 'member';
-  status: 'online' | 'offline';
-  wins: number;
-  bestPick: string;
-}
-
-interface Clan {
-  id: number;
-  name: string;
-  icon: string;
-  members: number;
-  wins: number;
-  matches: number;
-  isActive: boolean;
-  nextMatch: string;
-  description?: string;
-  memberList?: ClanMember[];
-  winStreak?: number;
-  leagues?: string[];
-}
-
-interface ClanChallenge {
-  id: number;
-  challenger: string;
-  challengerIcon: string;
-  type: string;
-  date: string;
-  isNew: boolean;
-}
+import { Clan, ClanMember, ClanChallenge } from '@/types';
 
 const ClansPanel: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'myclans' | 'discover'>('myclans');

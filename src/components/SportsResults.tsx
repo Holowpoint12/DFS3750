@@ -1,23 +1,5 @@
 import React, { useState } from 'react';
-
-interface Player {
-  position: string;
-  name: string;
-  team: string;
-  opponent: string;
-  points: number;
-  stats: string;
-  image: string;
-}
-
-interface FriendResult {
-  name: string;
-  avatar: string;
-  total: number;
-  position: number;
-  bestPlayer: string;
-  worstPlayer: string;
-}
+import { Player, FriendResult } from '@/types';
 
 const SportsResults: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'lineup' | 'friends'>('lineup');

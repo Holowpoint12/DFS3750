@@ -1,54 +1,69 @@
 # HoopStack - Fantasy Sports Social Platform
 
-HoopStack is a social fantasy sports application that focuses on playing with friends rather than monetary rewards. The app creates an engaging environment for fantasy sports enthusiasts to form clans, challenge friends, and enjoy the social aspects of fantasy sports.
+HoopStack is a social fantasy sports platform focused on playing with friends. This application allows users to create fantasy sports lineups, join clans, participate in live game chats, and send interactive taunts to friends.
 
-## 🏀 Features
+## Features
 
-- **Social Leaderboards**: Compete with friends for bragging rights
-- **Clan System**: Create or join clans to play as teams
-- **Live Feeds**: Watch games together with friends in real-time
-- **Group Chat**: Communicate with other players during games
-- **Taunt System**: Playfully taunt your friends with customizable messages
-- **Sports Results**: View your lineup stats and compare with friends
+- **Social Fantasy Sports**: Create lineups and compete with friends
+- **Live Game Stream**: Watch live games while chatting with friends (integrated YouTube streaming)
+- **Clan System**: Create or join clans to compete as a team
+- **Interactive Taunts**: Send animated taunts during games
+- **Live Chat**: Real-time chat with emoji support and reply functionality
+- **Game Stats**: View real-time game statistics
 
-## 📋 Prerequisites
+## Screenshots
 
-- Node.js 14.x or higher
+Screenshots of the application can be found in the `/screenshots` directory.
+
+## Technologies Used
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- YouTube API for video streaming
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version 14.0.0 or later)
 - npm or yarn
 
-## 🚀 Getting Started
+### Installation
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/hoopstack.git
-   cd hoopstack
-   ```
+1. Clone this repository:
+```bash
+git clone https://github.com/yourusername/hoopstack.git
+cd hoopstack
+```
 
 2. Install dependencies:
-   ```
-   npm install
-   ```
+```bash
+npm install
+# or
+yarn install
+```
 
 3. Run the development server:
-   ```
-   npm run dev
-   ```
+```bash
+npm run dev
+# or
+yarn dev
+```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## 📱 Application Structure
+## Development
 
-- `/src/components` - React components used throughout the app
-- `/src/pages` - Next.js pages that define routes
-- `/src/styles` - Global styles and Tailwind CSS configuration
+### Folder Structure
 
-## 🛠️ Built With
+- `/src/components`: React components
+- `/src/pages`: Next.js pages
+- `/src/styles`: CSS styles including Tailwind configuration
+- `/src/utils`: Utility functions
+- `/src/types.d.ts`: TypeScript definitions
 
-- [Next.js](https://nextjs.org/) - React framework for server-rendered applications
-- [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
