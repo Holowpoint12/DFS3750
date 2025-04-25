@@ -20,6 +20,10 @@ interface ChatUser {
   role?: 'admin' | 'moderator' | 'member';
 }
 
+// Define a simple list of words to filter (case-insensitive)
+// In a real application, use a more robust library or service
+const PROFANITY_FILTER = ['fuck', 'ass', 'bitch', 'faggot']; // Updated list
+
 const ChatInterface: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>([
@@ -69,6 +73,10 @@ const ChatInterface: React.FC = () => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [replyingTo, setReplyingTo] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<'all' | 'game' | 'taunts'>('all');
+  
+  // State for the profanity warning notification
+  const [showProfanityWarning, setShowProfanityWarning] = useState(false);
+  const [warningMessage, setWarningMessage] = useState('');
 
   // Taunt categories
   const tauntCategories = {
@@ -165,9 +173,32 @@ const ChatInterface: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Function to check for profanity
+  const containsProfanity = (text: string): boolean => {
+    const lowerCaseText = text.toLowerCase();
+    return PROFANITY_FILTER.some(word => lowerCaseText.includes(word));
+  };
+
+  // Function to show and hide the warning notification
+  const triggerWarning = (message: string) => {
+    setWarningMessage(message);
+    setShowProfanityWarning(true);
+    // Hide the warning after 3 seconds
+    setTimeout(() => {
+      setShowProfanityWarning(false);
+    }, 3000);
+  };
+
   const handleSendMessage = (text = newMessage, isTaunt = false) => {
     if (text.trim()) {
-      // Generate random taunt emojis if this is a taunt
+      // Check for profanity before sending
+      if (!isTaunt && containsProfanity(text)) {
+        triggerWarning('Please keep the chat respectful. Message not sent.');
+        setNewMessage(''); // Clear the input field
+        return; // Stop the function here
+      }
+
+      // Proceed with sending the message if no profanity detected
       const tauntEmojis = isTaunt ? 
         ['🔥', '💥', '😎', '🏆', '👑', '📊', '🚀', '⚡', '💪', '🎯']
           .sort(() => 0.5 - Math.random())
@@ -208,13 +239,13 @@ const ChatInterface: React.FC = () => {
           ];
           
           const responseMsg: Message = {
-            id: messages.length + 2,
+            id: messages.length + 2, // Note: Potential ID collision if multiple messages send quickly
             user: randomUser.name,
             text: responses[Math.floor(Math.random() * responses.length)],
             time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
             reactions: 0,
             isNew: true,
-            replyTo: messages.length + 1
+            replyTo: newMsg.id // Use the ID of the message just sent
           };
           
           setMessages(prev => [...prev, responseMsg]);
@@ -255,7 +286,15 @@ const ChatInterface: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-background-darker">
+    <div className="flex flex-col h-screen bg-background-darker relative">
+      {/* Profanity Warning Notification - Positioned at the top */}
+      {showProfanityWarning && (
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 bg-warning text-white px-4 py-2 rounded-lg shadow-md text-sm animate-fadeIn">
+          {warningMessage}
+        </div>
+      )}
+
+      {/* Header */}
       <div className="flex items-center justify-between p-4 bg-black bg-opacity-20 border-b border-white border-opacity-5">
         <div>
           <h2 className="text-xl font-semibold mb-1 text-text-primary">Monday Night Hoopers</h2>
@@ -281,6 +320,7 @@ const ChatInterface: React.FC = () => {
         </div>
       </div>
       
+      {/* Chat Tabs */}
       <div className="bg-black bg-opacity-10 px-4 py-2 flex border-b border-white border-opacity-5">
         <button 
           onClick={() => setActiveTab('all')}
@@ -302,6 +342,7 @@ const ChatInterface: React.FC = () => {
         </button>
       </div>
 
+      {/* Messages Area */}
       <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
         {messages
           .filter(msg => {
@@ -387,6 +428,7 @@ const ChatInterface: React.FC = () => {
         <div ref={messagesEndRef} />
       </div>
 
+      {/* Reply Indicator */}
       {replyingTo && (
         <div className="p-2 mx-4 mb-2 bg-black bg-opacity-20 rounded-lg border-l-2 border-primary flex justify-between items-center">
           <div className="flex items-center">
@@ -397,6 +439,7 @@ const ChatInterface: React.FC = () => {
         </div>
       )}
 
+      {/* Input Area */}
       <div className="p-4 flex items-center gap-2 border-t border-white border-opacity-5">
         <button 
           className="bg-transparent border-none text-text-light text-xl flex items-center justify-center w-10 h-10 rounded-full hover:bg-white hover:bg-opacity-10"
