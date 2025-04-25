@@ -67,4 +67,4 @@ export interface ClanChallenge {
 }
 
 // Navigation Types
-export type PanelType = 'home' | 'groups' | 'chat' | 'results' | 'leaderboard' | 'clans' | 'live'; 
+export type PanelType = 'home' | 'groups' | 'chat' | 'results' | 'leaderboard' | 'clans' | 'live' | 'assistance'; 

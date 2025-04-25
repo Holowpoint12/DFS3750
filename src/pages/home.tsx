@@ -6,6 +6,7 @@ import GroupsPanel from '@/components/GroupsPanel';
 import SocialLeaderboard from '@/components/SocialLeaderboard';
 import ClansPanel from '@/components/ClansPanel';
 import LiveFeed from '@/components/LiveFeed';
+import Assistance from '@/components/Assistance';
 import { PanelType } from '@/types';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -113,32 +114,27 @@ const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* Navigation Grid */}
-            <div className="grid grid-cols-2 gap-3 mb-4">
+            {/* Navigation Grid - Updated to include Assistance */}
+            <div className="grid grid-cols-3 gap-3 mb-4">
               {[ 
                 { panel: 'groups', icon: '👥', label: 'Friend Groups', color: 'primary' },
                 { panel: 'clans', icon: '🛡️', label: 'Clans', color: 'secondary' },
                 { panel: 'chat', icon: '💬', label: 'Game Chat', color: 'accent' },
-                { panel: 'leaderboard', icon: '🏆', label: 'Leaderboard', color: 'notification' }
+                { panel: 'leaderboard', icon: '🏆', label: 'Leaderboard', color: 'notification' },
+                { panel: 'results', icon: '📊', label: 'Results', color: 'success' },
+                { panel: 'assistance', icon: '❓', label: 'Help', color: 'primary-light' } // Added Assistance
               ].map(item => (
                 <button 
                   key={item.panel}
                   onClick={() => navigateTo(item.panel as PanelType)} 
-                  className={`bg-${item.color} hover:bg-opacity-80 text-white p-4 rounded-custom flex flex-col items-center transition-colors shadow-md`}
+                  className={`bg-[var(--${item.color})] hover:opacity-80 text-white p-4 rounded-custom flex flex-col items-center justify-center transition-opacity shadow-md aspect-square`}
+                  style={{ backgroundColor: `var(--${item.color})` }}
                 >
                   <span className="text-2xl mb-1">{item.icon}</span>
-                  <span className="text-base font-bold">{item.label}</span>
+                  <span className="text-sm font-bold text-center">{item.label}</span>
                 </button>
               ))}
             </div>
-
-            <button 
-              onClick={() => navigateTo('results')} 
-              className="bg-background-darker hover:bg-opacity-80 w-full text-text-primary p-4 rounded-custom flex items-center justify-center gap-2 transition-colors shadow-md border border-white border-opacity-10 dark:border-black dark:border-opacity-10"
-            >
-              <span className="text-xl">📊</span>
-              <span className="text-base font-bold">View Your Results</span>
-            </button>
           </div>
         </div>
       )}
@@ -176,10 +172,11 @@ const Home: React.FC = () => {
           {activePanel === 'leaderboard' && <SocialLeaderboard />}
           {activePanel === 'clans' && <ClansPanel />}
           {activePanel === 'live' && <LiveFeed />}
+          {activePanel === 'assistance' && <Assistance />}
         </div>
       )}
     </div>
   );
 };
 
-export default Home; 
+export default Home;
