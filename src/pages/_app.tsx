@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { initializeBrowserTools } from '@/utils/browser-tools';
+import { ThemeProvider } from '@/context/ThemeContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
+    <ThemeProvider>
       <Head>
         <title>HoopStack - Fantasy Sports Social Platform</title>
         <meta name="description" content="Play fantasy sports with friends, join clans, and enjoy the social experience without monetary stakes" />
@@ -25,6 +26,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </ThemeProvider>
   );
 } 
